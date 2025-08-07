@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f0f1a, #1c1c2b);
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+header {
+  background: linear-gradient(90deg, #2c3e50, #5b2c82);
+  padding: 40px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 3em;
+  margin: 0;
+  color: #fff;
+}
+
+header p {
+  margin: 5px 0;
+  color: #ddd;
+}
+
+.title{
+  font-style: italic;
+}
+.tagline {
+  font-style: italic;
+  color: #d8b0ff;
+}
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  background: #5b2c82;
+  padding: 10px 20px;
+  margin: 0 8px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+  background: #8c44ff;
+  box-shadow: 0 0 10px #8c44ff;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+section h2 {
+  color: #d0aaff;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.hero {
+  
+  border-radius: 20px;
+  padding: 50px 20px;
+}
+
+.hero .cta-btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1c1c2b;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #8c44ff55;
+}
+
+.link-btn, .cta-btn {
+  display: inline-block;
+  background: #8c44ff;
+  color: #fff;
+  padding: 12px 25px ;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.link-btn:hover, .cta-btn:hover {
+  background: #a566ff;
+  box-shadow: 0 0 10px #a566ff;
+}
+
+footer {
+  background: #1c1c2b;
+  text-align: center;
+  padding: 30px 20px;
+  color: #aaa;
+  margin-top: 40px;
+}
+
+/* Appointment Section */
+.appointment {
+  max-width: 500px;
+  margin: auto;
+  background: #1c1c2b; /* Dark card */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00000040;
+  text-align: left;
+}
+
+.appointment h2 {
+  color: #d0aaff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.appointment p {
+  color: #ccc;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+form input {
+  width: 100%;
+  padding: 12px 15px;
+  background: #29293d;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  margin-bottom: 20px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border: 2px solid #8c44ff;
+  box-shadow: 0 0 5px #8c44ff;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #5b2c82, #8c44ff);
+  color: #fff;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #7a3bd8, #a566ff);
+  box-shadow: 0 0 15px #a566ff88;
+}
+.admin-login {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.admin-btn {
+  background: transparent;
+  border: 2px solid #d0aaff;
+  color: #d0aaff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.admin-btn:hover {
+  background: #8c44ff;
+  color: #fff;
+  border-color: #8c44ff;
+  box-shadow: 0 0 10px #8c44ff88;
+}
+
+.admin-form {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #1c1c2b;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00000040;
+  text-align: left;
+}
+
+.admin-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d0aaff;
+}
+
+.admin-dashboard {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #1c1c2b;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00000040;
+  text-align: left;
+}
+
+.admin-dashboard h2 {
+  color: #d0aaff;
+  margin-bottom: 10px;
+}
+
+.admin-dashboard p {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.bookings h3 {
+  color: #d0aaff;
+  margin-bottom: 20px;
+}
+
+.booking-card {
+  background: #29293d;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px #00000020;
+}
+
+.booking-card p {
+  margin: 5px 0;
+  color: #eee;
+}
+
+.booking-actions {
+  margin-top: 15px;
+}
+
+.booking-actions button {
+  background: #5b2c82;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin-right: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.booking-actions button:hover {
+  background: #8c44ff;
+  box-shadow: 0 0 10px #8c44ff88;
+}
+
+.confirm-btn {
+  background: #2ecc71;
+}
+
+.confirm-btn:hover {
+  background: #27ae60;
+  box-shadow: 0 0 10px #2ecc7180;
+}
+
+.reschedule-btn {
+  background: #f39c12;
+}
+
+.reschedule-btn:hover {
+  background: #e67e22;
+  box-shadow: 0 0 10px #f39c1280;
+}
+
+.contact-btn {
+  background: #3498db;
+}
+
+.contact-btn:hover {
+  background: #2980b9;
+  box-shadow: 0 0 10px #3498db80;
+}
+
+header {
+  position: relative; /* Important! */
+}
+
+.back-home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid #d0aaff;
+  color: #d0aaff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.back-home-btn:hover {
+  background: #8c44ff;
+  border-color: #8c44ff;
+  color: #fff;
+  box-shadow: 0 0 10px #8c44ff88;
+}
+
+/* Universal button animation for hover & click press */
+.link-btn, 
+.cta-btn, 
+.submit-btn,
+.admin-btn,
+.booking-actions button,
+.confirm-btn,
+.reschedule-btn,
+.contact-btn,
+.back-home-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center;
+}
+
+.link-btn:hover,
+.cta-btn:hover,
+.submit-btn:hover,
+.admin-btn:hover,
+.booking-actions button:hover,
+.confirm-btn:hover,
+.reschedule-btn:hover,
+.contact-btn:hover,
+.back-home-btn:hover {
+  transform: scale(1.05);
+}
+
+.link-btn:active,
+.cta-btn:active,
+.submit-btn:active,
+.admin-btn:active,
+.booking-actions button:active,
+.confirm-btn:active,
+.reschedule-btn:active,
+.contact-btn:active,
+.back-home-btn:active {
+  transform: scale(0.95);
+}
+
+
+section .text {
+  flex: 1 1 400px;
+}
+
+section .image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+section .image img {
+  max-width: 100%;
+  height:auto;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(140, 68, 255, 0.3);
+}
+
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background: #8c44ff;
+  transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #8c44ff55; }
+  70% { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.link-btn:hover,
+.cta-btn:hover,
+.submit-btn:hover {
+  animation: pulse 1.2s infinite;
+}
+
+section .image {
+  overflow: hidden;
+}
+
+section .image img {
+  transition: transform 0.5s ease;
+}
+
+section .image img:hover {
+  transform: scale(1.05);
+}
+.card, .appointment, .admin-form, .admin-dashboard, .booking-card {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Phones (max-width: 600px) */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2em;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 40px 15px;
+  }
+
+  .hero {
+    padding: 30px 15px;
+  }
+
+  .appointment,
+  .admin-form,
+  .admin-dashboard {
+    padding: 25px 20px;
+  }
+
+  .admin-login,
+  .back-home-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Tablets (601px to 900px) */
+@media (max-width: 900px) {
+  header h1 {
+    font-size: 2.5em;
+  }
+
+  nav a {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .appointment,
+  .admin-form,
+  .admin-dashboard {
+    padding: 30px 25px;
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact & Appointment – skinz.</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1 class="title">skinz.</h1>
+    <p class="tagline">the shape of confidence</p>
+    <p class="doctor-name">Dr. Deeba Sattar Khan</p>
+    <p class="doctor-role">Dermatologist • Aesthetic Physician • Cupping Therapist</p>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="location">
+      <h2>Contact & Appointment</h2>
+      <p><strong>Clinic:</strong> Jinnah Memorial Hospital, 2-A Civil Lines, Rawalpindi</p>
+      <p><strong>Phone:</strong> 0301-5307378 (Akhtar)</p>
+      <p><strong>Facebook:</strong> <a href="https://facebook.com/doc.deeba" target="_blank">facebook.com/doc.deeba</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/skinz_dermatology" target="_blank">@skinz_dermatology</a></p>
+
+      <section class="appointment">
+  <h2>🗓️ Book Your Appointment</h2>
+  <p>Fill out the form and we’ll get back to you as soon as possible.</p>
+  <form id="appointmentForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Phone Number:</label>
+<input 
+  type="tel" 
+  id="phone" 
+  name="phone" 
+  pattern="[0-9]{4}-[0-9]{7}" 
+  placeholder="03xx-xxxxxxx"
+  title="Phone number must be in the format: 03xx-xxxxxxx"
+  required 
+/>
+
+    <label for="date">Preferred Date:</label>
+    <input type="date" id="date" name="date" required />
+
+    <button type="submit" class="submit-btn">Book Appointment</button>
+    
+  </form>
+</section>
+
+
+  <footer>
+    <p>&copy; 2025 skinz. | Dr. Deeba Sattar Khan | All rights reserved.</p>
+  </footer>
+
+  <script>
+  // Fade in on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    // Ignore links that open in a new tab
+    if (link.getAttribute('target') === '_blank') return;
+
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Only fade if it's an internal link
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // Match your CSS transition duration!
+      }
+    });
+  });
+</script>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

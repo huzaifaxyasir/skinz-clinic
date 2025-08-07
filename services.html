@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services – skinz.</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1 class="title">skinz.</h1>
+    <p class="tagline">the shape of confidence</p>
+    <p class="doctor-name">Dr. Deeba Sattar Khan</p>
+    <p class="doctor-role">Dermatologist • Aesthetic Physician • Cupping Therapist</p>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Skin Consultation</h3>
+          <p>Personalized skin assessments to address your unique concerns.</p>
+        </div>
+
+        <div class="card">
+          <h3>Acne & Scar Treatment</h3>
+          <p>Effective solutions for clear, healthy skin.</p>
+        </div>
+
+        <div class="card">
+          <h3>Laser Therapy</h3>
+          <p>Safe laser treatments for hair removal, pigmentation, and more.</p>
+        </div>
+
+        <div class="card">
+          <h3>Anti-Aging Procedures</h3>
+          <p>Modern non-surgical methods to keep your skin youthful.</p>
+        </div>
+
+        <div class="card">
+          <h3>Skin Allergy Treatment</h3>
+          <p>Diagnosis and management of skin allergies and conditions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Hijama (Cupping Therapy)</h3>
+          <p>Certified cupping therapy for detox and pain relief.</p>
+        </div>
+
+          <div class="card">
+      <h3>PRP Therapy</h3>
+      <p>Platelet-Rich Plasma treatments for hair restoration and skin rejuvenation.</p>
+    </div>
+
+    <div class="card">
+      <h3>Microneedling</h3>
+      <p>Boost collagen and reduce scars with safe, medical-grade microneedling.</p>
+    </div>
+
+    <div class="card">
+      <h3>HydraFacial</h3>
+      <p>Advanced hydrating facials for deep cleansing and glowing skin.</p>
+    </div>
+
+    <div class="card">
+      <h3>Skin Whitening Treatments</h3>
+      <p>Safe and effective solutions to brighten your skin tone.</p>
+    </div>
+
+    <div class="card">
+      <h3>Botox & Fillers</h3>
+      <p>Minimize fine lines and restore volume with expertly applied injectables.</p>
+    </div>
+
+    <div class="card">
+      <h3>Chemical Peels</h3>
+      <p>Rejuvenate your skin by gently exfoliating and treating blemishes.</p>
+    </div>
+
+<div class="card">
+  <h3>IV Glutathione Drip</h3>
+  <p>Skin lightening and brightening through safe intravenous antioxidant therapy.</p>
+</div>
+
+<div class="card">
+  <h3>Warts & Mole Removal</h3>
+  <p>Quick and safe removal of unwanted warts, skin tags, and benign moles.</p>
+</div>
+
+<div class="card">
+  <h3>Hair Loss Treatment</h3>
+  <p>Advanced PRP and mesotherapy options to help restore hair growth naturally.</p>
+</div>
+
+<div class="card">
+  <h3>Skin Tightening</h3>
+  <p>Non-surgical radiofrequency or ultrasound treatments to lift and tighten sagging skin.</p>
+</div>
+
+<div class="card">
+  <h3>Melasma & Pigmentation Treatment</h3>
+  <p>Specialized peels, lasers, and topical treatments to even out skin tone.</p>
+</div>
+
+<div class="card">
+  <h3>Bridal Skin Packages</h3>
+  <p>Customized pre-wedding treatments for glowing, flawless bridal skin.</p>
+</div>
+
+    <div class="card">
+      <h3>Body Contouring</h3>
+      <p>Non-surgical procedures to help shape and tone your body.</p>
+    </div>
+    
+    <div class="card">
+  <h3>Pediatric Dermatology</h3>
+  <p>Safe and gentle treatments for children’s skin conditions, from eczema to birthmarks.</p>
+</div>
+  </div>
+      </div>
+      <a href="contact.html" class="cta-btn">Book a Consultation</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 skinz. | Dr. Deeba Sattar Khan | All rights reserved.</p>
+  </footer>
+
+  <script>
+  // Fade in on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    // Ignore links that open in a new tab
+    if (link.getAttribute('target') === '_blank') return;
+
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Only fade if it's an internal link
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // Match your CSS transition duration!
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

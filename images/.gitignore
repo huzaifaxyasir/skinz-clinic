@@ -1,0 +1,10 @@
+# SQLite database
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login – skinz.</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1 class="title">skinz.</h1>
+    <p class="tagline">Admin Access</p>
+  </header>
+
+  <main>
+    <section class="admin-form">
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 skinz. | Admin Access</p>
+  </footer>
+
+   <script>
+  // Fade in on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    // Ignore links that open in a new tab
+    if (link.getAttribute('target') === '_blank') return;
+
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Only fade if it's an internal link
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // Match your CSS transition duration!
+      }
+    });
+  });
+</script>
+  <script src="admin.js" defer></script>
+</body>
+</html>

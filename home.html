@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>skinz. – Home</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1 class="title">skinz.</h1>
+    <p class="tagline">the shape of confidence</p>
+    <p class="doctor-name">Dr. Deeba Sattar Khan</p>
+    <p class="doctor-role">Dermatologist • Aesthetic Physician • Cupping Therapist</p>
+    <nav>
+      <a href="home.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="admin-login">
+  <a href="admin-login.html" class="admin-btn">Admin Login</a>
+</div>
+
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Reveal Your Best Skin</h2>
+      <p>Personalized dermatology and aesthetics treatments to boost your confidence.</p>
+        <div class="image">
+    <img src="images/clinic1.jpg" alt="Dr. Deeba Sattar Khan">
+  </div>
+      <a href="contact.html" class="cta-btn">Book an Appointment</a>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <h2>About Dr. Deeba</h2>
+      <p>Dr. Deeba Sattar Khan is a highly respected and award-winning board-certified dermatologist and aesthetic physician based at Jinnah Memorial Hospital, Rawalpindi. With over 9 years of experience, she specializes in evidence-based treatments to help patients achieve healthy, radiant skin.</p>
+        <div class="image">
+    <img src="images/laser.jpg" alt="Dr. Deeba Sattar Khan">
+  </div>
+      <a href="about.html" class="link-btn">Learn More</a>
+
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Acne & Scar Treatment</h3>
+          <p>Say goodbye to acne and scars with modern treatments tailored for your skin type.</p>
+        </div>
+        <div class="card">
+          <h3>Laser Therapy</h3>
+          <p>Safe and effective laser solutions for hair removal, pigmentation, and rejuvenation.</p>
+        </div>
+        <div class="card">
+          <h3>Anti-Aging Procedures</h3>
+          <p>Non-surgical treatments to help you look youthful and radiant.</p>
+        </div>
+        <div class="card">
+          <h3>Hijama (Cupping)</h3>
+          <p>Certified cupping therapy for detoxification and pain relief.</p>
+        </div>
+        <div class="card">
+      <h3>HydraFacial</h3>
+      <p>Advanced hydrating facials for deep cleansing and glowing skin.</p>
+    </div>
+    <div class="card">
+      <h3>Botox & Fillers</h3>
+      <p>Minimize fine lines and restore volume with expertly applied injectables.</p>
+    </div>
+    <div class="card">
+      <h3>PRP Therapy</h3>
+      <p>Platelet-Rich Plasma treatments for skin rejuvenation and hair regrowth.</p>
+    </div>
+    <div class="card">
+      <h3>Chemical Peels</h3>
+      <p>Rejuvenate your skin by gently exfoliating and treating blemishes.</p>
+    </div>
+      </div>
+      <a href="services.html" class="link-btn">See All Services</a>
+    </section>
+
+    <!-- Location -->
+    <section class="location">
+      <h2>Visit Us</h2>
+      <p><strong>Clinic:</strong> Jinnah Memorial Hospital, 2-A Civil Lines, Rawalpindi</p>
+      <p><strong>Call:</strong> 0301-5307378 (Akhtar)</p>
+      <p>For bookings and more info, feel free to reach out via phone or our social pages.</p>
+       <div class="image">
+    <img src="images/hospital.jpg" alt="Dr. Deeba Sattar Khan">
+  </div>
+      <a href="contact.html" class="cta-btn">Contact & Book Now</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 skinz. | Dr. Deeba Sattar Khan | All rights reserved.</p>
+  </footer>
+
+  <script>
+  // Fade in on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    // Ignore links that open in a new tab
+    if (link.getAttribute('target') === '_blank') return;
+
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Only fade if it's an internal link
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // Match your CSS transition duration!
+      }
+    });
+  });
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>

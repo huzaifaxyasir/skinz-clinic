@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Dr. Deeba – skinz.</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1 class="title">skinz.</h1>
+    <p class="tagline">the shape of confidence</p>
+    <p class="doctor-name">Dr. Deeba Sattar Khan</p>
+    <p class="doctor-role">Dermatologist • Aesthetic Physician • Cupping Therapist</p>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about">
+  <h2>About Dr. Deeba</h2>
+  <p>Dr. Deeba Sattar Khan is a highly respected and award-winning board-certified dermatologist and aesthetic physician based at Jinnah Memorial Hospital, Rawalpindi. With over <strong>9 years of experience</strong>, she specializes in evidence-based treatments to help patients achieve healthy, radiant skin.</p>
+
+  <h3>🎓 Qualifications</h3>
+  <ul>
+    <li>MBBS</li>
+    <li>FCPS – Dermatology (Pakistan)</li>
+    <li>Diploma in Dermatology – UK</li>
+  </ul>
+
+  <h3>⭐ Specialties & Services</h3>
+  <ul>
+    <li>Acne & Scar Treatment • Pigmentation & Melasma Management</li>
+    <li>Skin Allergies & Pediatric Dermatology</li>
+    <li>Laser Therapy (Hair Removal, Rejuvenation, CO₂ Laser Resurfacing)</li>
+    <li>PRP Therapy • Microneedling • Hydrafacial</li>
+    <li>Botox & Fillers • Chemical Peels • Skin Surgery & Biopsy</li>
+    <li>Hijama (Cupping) & Cryotherapy</li>
+  </ul>
+
+  <h3>💬 Patient Experience</h3>
+  <p>Boasting a <strong>99%+ satisfaction rate</strong> and an average wait time of under 15 minutes, Dr. Deeba is trusted for her compassionate care and personalized treatment approach. She consults in both Urdu and English, ensuring comfortable and clear communication.</p>
+
+  <h3>📍 Practice Details</h3>
+  <p><strong>Clinic:</strong> Jinnah Memorial Hospital (Civil Lines), 2‑A Rashid Minhas Road, Rawalpindi<br/>
+  <strong>Timings:</strong> Monday–Saturday, 10 AM–2 PM<br/>
+  <strong>Consultation Fee:</strong> Rs 1,500–2,000</p>
+
+  <a href="services.html" class="link-btn">Explore Services</a>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 skinz. | Dr. Deeba Sattar Khan | All rights reserved.</p>
+  </footer>
+
+  <script>
+  // Fade in on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    // Ignore links that open in a new tab
+    if (link.getAttribute('target') === '_blank') return;
+
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Only fade if it's an internal link
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // Match your CSS transition duration!
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
