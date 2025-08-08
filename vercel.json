@@ -1,13 +1,10 @@
 {
   "builds": [
-    { "src": "api/server.js", "use": "@vercel/node" }
+    { "src": "api/server.js", "use": "@vercel/node" },
+    { "src": "home.html", "use": "@vercel/static" }
   ],
-  "rewrites": [
-    { "source": "/", "destination": "/home.html" },
-    { "source": "/services", "destination": "/services.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/admin-login", "destination": "/admin-login.html" },
-    { "source": "/admin-dashboard", "destination": "/admin-dashboard.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/server.js" },
+    { "src": "/(.*)", "dest": "/home.html" }
   ]
 }
