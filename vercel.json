@@ -5,6 +5,17 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/server.js" },
-    { "src": "/", "dest": "/home.html" }
+    { "src": "/", "dest": "/home.html" },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/html"
+        }
+      ],
+      "dest": "/home.html"
+    }
   ]
 }
