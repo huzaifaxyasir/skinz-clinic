@@ -6,12 +6,11 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
 
 // === MIDDLEWARE ===
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname))); // Serve static files
 
 // === DATABASE SETUP ===
 const db = new sqlite3.Database("./db/skinz.db", (err) => {
@@ -22,7 +21,7 @@ const db = new sqlite3.Database("./db/skinz.db", (err) => {
   }
 });
 
-// Create appointments table with status
+// Create tables if not exist
 db.run(`
   CREATE TABLE IF NOT EXISTS appointments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,8 +32,6 @@ db.run(`
     status TEXT DEFAULT 'pending'
   )
 `);
-
-// Create admins table
 db.run(`
   CREATE TABLE IF NOT EXISTS admins (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,23 +49,24 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// === ROUTES ===
 
-// === API ROUTES ===
+// Serve home.html at root
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "home.html"));
+});
 
-// POST /api/appointments - Book appointment
+// API routes (unchanged)
 app.post("/api/appointments", (req, res) => {
   const { name, email, date, phone } = req.body;
-
   const sql = `INSERT INTO appointments (name, email, date, phone, status) VALUES (?, ?, ?, ?, ?)`;
-  db.run(sql, [name, email, date, phone, 'pending'], function (err) {
-    if (err) {
-      return res.status(500).json({ message: err.message });
-    }
 
-    // Send email to doctor
+  db.run(sql, [name, email, date, phone, 'pending'], function (err) {
+    if (err) return res.status(500).json({ message: err.message });
+
     const mailOptions = {
       from: '"Skinz Dermatology" <huzaifaxyasir@gmail.com>',
-      to: 'huzaifaxyasir@gmail.com', // Replace with doctor's email
+      to: 'huzaifaxyasir@gmail.com',
       subject: `New Appointment from ${name}`,
       html: `
         <h2>New Appointment Booking</h2>
@@ -77,46 +75,35 @@ app.post("/api/appointments", (req, res) => {
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Date:</strong> ${date}</p>
         <p>Status: <strong>Pending</strong></p>
-        <p><a href="http://localhost:3000/admin-login.html" target="_blank">Go to Admin Dashboard to confirm</a></p>
+        <p><a href="/admin-login.html" target="_blank">Go to Admin Dashboard to confirm</a></p>
       `
     };
 
     transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        console.error("❌ Failed to send email:", err.message);
-      } else {
-        console.log("📧 Doctor notified:", info.response);
-      }
+      if (err) console.error("❌ Failed to send email:", err.message);
+      else console.log("📧 Doctor notified:", info.response);
     });
 
     res.json({ success: true, id: this.lastID });
   });
 });
 
-// GET /api/appointments - Fetch all appointments
 app.get("/api/appointments", (req, res) => {
-  const sql = `SELECT * FROM appointments ORDER BY id DESC`;
-  db.all(sql, [], (err, rows) => {
+  db.all(`SELECT * FROM appointments ORDER BY id DESC`, [], (err, rows) => {
     if (err) return res.status(500).json({ message: err.message });
     res.json(rows);
   });
 });
 
-// POST /api/appointments/:id/confirm - Confirm appointment and email patient
 app.post("/api/appointments/:id/confirm", (req, res) => {
   const appointmentId = req.params.id;
 
-  // Get appointment info
   db.get(`SELECT * FROM appointments WHERE id = ?`, [appointmentId], (err, appointment) => {
-    if (err || !appointment) {
-      return res.status(404).json({ message: "Appointment not found" });
-    }
+    if (err || !appointment) return res.status(404).json({ message: "Appointment not found" });
 
-    // Update status to confirmed
     db.run(`UPDATE appointments SET status = 'confirmed' WHERE id = ?`, [appointmentId], function (err) {
       if (err) return res.status(500).json({ message: err.message });
 
-      // Send confirmation email to patient
       const mailOptions = {
         from: '"Skinz Dermatology" <huzaifaxyasir@gmail.com>',
         to: appointment.email,
@@ -130,11 +117,8 @@ app.post("/api/appointments/:id/confirm", (req, res) => {
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.error("❌ Failed to notify patient:", err.message);
-        } else {
-          console.log("📧 Patient notified:", info.response);
-        }
+        if (err) console.error("❌ Failed to notify patient:", err.message);
+        else console.log("📧 Patient notified:", info.response);
       });
 
       res.json({ success: true, message: "Appointment confirmed and patient notified." });
@@ -142,22 +126,15 @@ app.post("/api/appointments/:id/confirm", (req, res) => {
   });
 });
 
-// DELETE /api/appointments/:id - Delete appointment
 app.delete("/api/appointments/:id", (req, res) => {
-  const { id } = req.params;
-
-  const sql = `DELETE FROM appointments WHERE id = ?`;
-  db.run(sql, [id], function (err) {
+  db.run(`DELETE FROM appointments WHERE id = ?`, [req.params.id], function (err) {
     if (err) return res.status(500).json({ message: err.message });
-
     res.json({ success: true });
   });
 });
 
-// POST /api/auth/login - Admin login
 app.post("/api/auth/login", (req, res) => {
   const { username, password } = req.body;
-
   const ADMIN_USERNAME = "chaand";
   const ADMIN_PASSWORD = "354061";
 
@@ -168,9 +145,5 @@ app.post("/api/auth/login", (req, res) => {
   }
 });
 
-// === START SERVER ===
-app.listen(port, () => {
-  console.log(`🌐 Server running at: http://localhost:${port}`);
-});
-
-
+// === EXPORT FOR VERCEL ===
+module.exports = app;
