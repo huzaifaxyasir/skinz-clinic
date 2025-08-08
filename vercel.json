@@ -1,11 +1,8 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/home.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/services", "destination": "/services.html" },
-    { "source": "/admin-login", "destination": "/admin-login.html" },
-    { "source": "/dashboard", "destination": "/admin-dashboard.html" }
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
   ],
-  "cleanUrls": true
+  "routes": [
+    { "src": "/(.*)", "dest": "server.js" }
+  ]
 }
