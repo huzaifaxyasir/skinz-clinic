@@ -1,21 +1,10 @@
 {
   "builds": [
     { "src": "api/server.js", "use": "@vercel/node" },
-    { "src": "public/styles.css", "use": "@vercel/static" },
     { "src": "home.html", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/server.js" },
-    {
-      "src": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": "text/html"
-        }
-      ],
-      "dest": "/home.html"
-    }
+    { "src": "/", "dest": "/home.html" }
   ]
 }
